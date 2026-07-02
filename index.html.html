@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahul Dang · Talent Acquisition Portfolio</title>
+<style>
+  :root {
+    --bg: #fafaf9;
+    --surface: #ffffff;
+    --text: #1a1a1a;
+    --text-muted: #555555;
+    --text-subtle: #888888;
+    --border: #e5e5e5;
+    --accent: #2a4d6e;
+    --accent-soft: #f0f4f8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+
+  .topbar {
+    font-size: 13px;
+    color: var(--text-subtle);
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 40px;
+  }
+
+  .header .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-subtle);
+    margin-bottom: 8px;
+  }
+
+  .header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+
+  .header .subtitle {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+
+  .contact {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 8px 24px;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  .contact a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  .contact a:hover { color: var(--accent); }
+
+  .intro {
+    font-size: 16px;
+    color: var(--text-muted);
+    padding: 24px 0;
+    margin-bottom: 24px;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 48px 0 20px;
+    letter-spacing: -0.3px;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 20px 0 8px;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  @media (max-width: 640px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .stat .num {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .stat .desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .company-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+
+  .company-block strong {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .company-block p {
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 24px 0;
+  }
+
+  @media (max-width: 720px) {
+    .two-col { grid-template-columns: 1fr; }
+  }
+
+  .col {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+  }
+
+  .col h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: var(--accent);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul li {
+    padding: 8px 0;
+    font-size: 14px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    padding-left: 16px;
+    position: relative;
+  }
+
+  ul li:last-child { border-bottom: none; }
+
+  ul li::before {
+    content: "·";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .four-col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  @media (max-width: 640px) {
+    .four-col { grid-template-columns: 1fr; }
+  }
+
+  .case {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+
+  .case-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .case-meta {
+    font-size: 12px;
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  .case-tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 600;
+  }
+
+  .case h3 {
+    font-size: 18px;
+    margin: 6px 0 16px;
+  }
+
+  .case-section {
+    margin-bottom: 14px;
+  }
+
+  .case-section .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .case-section p {
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 14px;
+  }
+
+  th {
+    text-align: left;
+    padding: 14px 16px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  td {
+    padding: 14px 16px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+
+  td.metric { font-weight: 600; color: var(--text); }
+  td.result { font-weight: 700; color: var(--accent); }
+
+  .footer {
+    margin-top: 60px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  .footer strong { color: var(--text); }
+
+  .footer a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  .footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">👤 Rahul Dang &nbsp;/&nbsp; Talent Acquisition Portfolio</div>
+
+  <div class="header">
+    <div class="label">📋 Profile</div>
+    <h1>Rahul Dang</h1>
+    <div class="subtitle">Talent Acquisition Leader · 12 Years Experience</div>
+    <div class="contact">
+      <div>📍 Diamond Bar, CA</div>
+      <div>📧 <a href="mailto:dangrahul1192@gmail.com">dangrahul1192@gmail.com</a></div>
+      <div>📱 909-436-7726</div>
+      <div>🎓 University of Southern California<span style="display:block; padding-left:1.6em;">Bachelor of Arts (BA), Political Science</span></div>
+      <div>🏅 AIRS Certified Technical Recruiter<span style="display:block; padding-left:1.6em;">Recruiter Academy Certified Recruiter (RACR)</span></div>
+      <div>🔗 <a href="https://www.linkedin.com/in/rahuldang1" target="_blank">linkedin.com/in/rahuldang1</a></div>
+    </div>
+  </div>
+
+  <div class="intro">
+    💡 Twelve years building recruiting functions for engineering, GTM, and corporate hiring across B2B technology, data, and infrastructure companies. At the senior level the work spans vendor and budget strategy, ATS and HRIS migration, employer branding, workforce planning, and team development, while remaining hands-on with executive and senior-level searches. I also build the tooling, not just use it: custom Claude Code sourcing scripts and Microsoft Copilot workflows running across my team, aimed at cutting cost and time-to-fill while keeping human judgment on the searches that need it. Currently leading talent acquisition for a national engineering firm with 70+ offices across 44 states.
+  </div>
+
+  <hr>
+
+  <h2>📊 At a Glance</h2>
+  <div class="stats">
+    <div class="stat"><div class="num">12</div><div class="desc">Years in Talent Acquisition</div></div>
+    <div class="stat"><div class="num">200+</div><div class="desc">Annual hires managed at Experian</div></div>
+    <div class="stat"><div class="num">44</div><div class="desc">States covered at SCS Engineers</div></div>
+    <div class="stat"><div class="num">$250K+</div><div class="desc">Agency and RPO spend reduced</div></div>
+    <div class="stat"><div class="num" style="font-size:21px;">AI Workflows</div><div class="desc">Built and run a national AI talent-intelligence system adopted firm-wide, from live sourcing to executive workforce planning</div></div>
+  </div>
+
+  <hr>
+
+  <h2>🌎 Global &amp; Cross-Functional Experience</h2>
+  <p style="color: var(--text-muted); margin-bottom: 16px;">🗺️ Recruiting across U.S. and international markets means managing different compensation benchmarks, immigration compliance frameworks, and time zone coordination simultaneously.</p>
+
+  <div class="company-block">
+    <strong>Experian · Fortune 500 · 23,000 employees · 32 countries · clients in 100+ countries</strong>
+    <p>Ran GTM and Engineering recruiting across U.S. and international markets, managing a team of 4 across full-cycle hiring. Managed H1B, OPT, and TN immigration workflows. Built pipelines for global business units across different compensation benchmarks and legal frameworks. Closed senior technical roles like Engineering Platform Directors and Cloud Infrastructure Managers across time zones with hiring managers in multiple countries.</p>
+  </div>
+
+  <div class="company-block">
+    <strong>SCS Engineers · 1,400+ employees · 70+ offices · 44 states</strong>
+    <p>Lead TA across a national footprint, managing a team of 4 while personally closing executive, niche engineering, and senior GTM searches. Run quarterly hiring kickoffs with business unit directors across 11 service lines, tied to a 400+ employee growth target. Established regional compensation benchmarks across labor markets including Texas, Montana, Florida, and the Pacific Northwest. Recruit civil, environmental, systems, and data engineering professionals across a geographically distributed national company.</p>
+  </div>
+
+  <div class="company-block">
+    <strong>Hoag Health System · Engineering, IT, BD, and Executive Search</strong>
+    <p>Recruited for the launch of a patient-facing digital health platform serving 650,000+ patients during rapid expansion at the onset of the pandemic. Mentored 2 junior recruiters on sourcing strategy and workflow prioritization. Used LinkedIn Talent Insights to advise department directors on market conditions and hiring demand.</p>
+  </div>
+
+  <div class="company-block">
+    <strong>Prime Healthcare · 45+ facilities · 14 states</strong>
+    <p>Owned 15+ active requisitions across revenue cycle, corporate, and executive functions at a national hospital network. Coordinated with regional hiring managers to align timelines with facility-level staffing and compliance requirements across a complex multi-state operation.</p>
+  </div>
+
+  <hr>
+
+  <h2>🎯 Leadership That Stays in the Work</h2>
+  <p style="color: var(--text-muted); margin-bottom: 16px;">⚡ Leading a team and staying on the desk are not mutually exclusive. Managing a recruiting team while personally carrying a req load of executive and niche roles is how I've operated throughout my career. The sourcing instincts, the compensation benchmarking, the hiring manager trust, and the pipeline data all stay sharper when you stay in the work alongside your team.</p>
+
+  <div class="two-col">
+    <div class="col">
+      <h3>As a Team Leader</h3>
+      <ul>
+        <li>Lead recruiting team and function across the firm's national footprint, after managing a team at Experian</li>
+        <li>Developed and promoted a recruiter to Senior Recruiter through structured performance planning</li>
+        <li>Mentored 2 junior recruiters at Hoag on sourcing strategy and workflow prioritization</li>
+        <li>Built team accountability through real-time pipeline dashboards and time-in-stage reporting</li>
+        <li>Weekly coaching sessions focused on why searches stalled, not just status updates</li>
+        <li>Created division of labor with dedicated sourcers feeding top-of-funnel for senior roles</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>As a Hands-On Recruiter</h3>
+      <ul>
+        <li>Personally maintain a req load of critical engineering and leadership roles at SCS alongside managing the team</li>
+        <li>Closed Engineering Platform Directors and Cloud Infrastructure Managers personally at Experian</li>
+        <li>Placed 5 executive-level candidates at Prime Healthcare through direct outreach, eliminating retained search firm fees</li>
+        <li>Closed 7 niche engineering hires at SCS in the first 6 months across hard-to-fill licensed markets</li>
+        <li>Filled 30+ management and leadership searches annually at Horizon as a full-cycle agency recruiter</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>🤖 Practical AI in Recruiting</h2>
+  <p style="color: var(--text-muted); margin-bottom: 16px;">🧠 I treat AI as leverage, not a gimmick. It extends sourcing reach and standardizes screening, which frees time for the executive and senior searches that still need human judgment. The difference from most recruiting leaders is that I build the tooling myself instead of waiting on a vendor roadmap.</p>
+
+  <div class="two-col">
+    <div class="col">
+      <h3>Custom Sourcing Tools · Claude Code</h3>
+      <ul>
+        <li>Built custom Claude Code sourcing scripts that surface licensed engineers outside traditional databases</li>
+        <li>Mapped 540+ named contacts across 181 organizations into a shared, living talent-intelligence file</li>
+        <li>Extends reach for executive and niche searches where LinkedIn Recruiter and Indeed coverage runs thin</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>Team Workflow Automation · Microsoft Copilot</h3>
+      <ul>
+        <li>Deployed scalable Microsoft Copilot workflows across the recruiting team</li>
+        <li>Standardized resume review, role-specific interview questions, and screen summaries</li>
+        <li>Reduces manual screening time and keeps quality consistent across recruiters</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>🏥 Industry &amp; Function Coverage</h2>
+  <div class="four-col">
+    <div class="col">
+      <h3>⚙️ Engineering &amp; Technical</h3>
+      <ul>
+        <li>Civil, environmental, systems, and data engineering (SCS)</li>
+        <li>Backend, cloud, and platform engineering (Experian)</li>
+        <li>Engineering Platform Directors and Cloud Infrastructure Managers</li>
+        <li>Digital platform engineering and IT operations (Hoag)</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>💼 GTM &amp; Revenue</h3>
+      <ul>
+        <li>Sales (AE, SDR, enterprise) in B2B SaaS at Experian</li>
+        <li>Business development at SCS Engineers and Hoag Health System</li>
+        <li>Marketing and revenue operations across Experian</li>
+        <li>Revenue cycle at Prime Healthcare</li>
+        <li>High-volume field and operations hiring at SCS Engineers</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>🏛️ Corporate, Finance &amp; Executive</h3>
+      <ul>
+        <li>Finance, accounting, and FP&amp;A roles across SCS, Experian, and Horizon</li>
+        <li>Corporate operations and executive functions at SCS and Experian</li>
+        <li>5 C-suite and executive placements at Prime Healthcare with no search firm fees</li>
+        <li>Senior leadership and Director-level closes across recent roles</li>
+        <li>Executive search work as part of personal req load at SCS</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>🤝 Agency &amp; Search Firm</h3>
+      <ul>
+        <li>Full-cycle agency search for client companies across the Central and Western U.S.</li>
+        <li>Sales, operations, finance, accounting, and corporate leadership placements</li>
+        <li>30+ management and leadership searches filled annually</li>
+        <li>Business development and client intake through close, turning first-time clients into repeat accounts</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>📁 Case Studies</h2>
+  <p style="color: var(--text-muted); margin-bottom: 20px;">Documented examples of real problems identified and solved with specific actions and measurable outcomes.</p>
+
+  <div class="case">
+    <div class="case-header">
+      <div class="case-meta">SCS Engineers · 2024–Present</div>
+      <div class="case-tag">AI Tooling</div>
+    </div>
+    <h3>AI Sourcing Tool: National Engineering Talent Map Built with Claude Code</h3>
+    <div class="case-section"><div class="label">Problem</div><p>Licensed niche talent (PE, PG, BCEE) in solid waste, landfill design, and environmental compliance does not surface reliably through standard channels. LinkedIn returns broad results, and SeekOut coverage thins out in the smaller markets where many projects sit. External search fees for hard-to-fill technical roles routinely topped $30K per hire. The recruiting function across 70+ offices and 44 states needed a comprehensive, shared map of competitor and adjacent-industry talent that the standard stack could not produce.</p></div>
+    <div class="case-section"><div class="label">Action</div><p>Designed a continuously refreshed national talent intelligence map using Claude Code, built and refined over two weeks and maintained as a living resource. It ingested direct competitors, adjacent firms including Tetra Tech, Jacobs, TRC Companies, and Republic Services, municipal and county public works entities, and SWANA and RAM/SWANA conference rosters. Output lived in a single live spreadsheet, each row carrying current and prior employers, a narrative experience summary, technical specialties mapped to internal business unit needs, multi-state licensure, LinkedIn URL, and verified contact information. Every contact was tied to a specific hiring manager and business unit, so recruiters, hiring managers, and leaders could filter by specialty and act the same day.</p></div>
+    <div class="case-section"><div class="label">Result</div><p>Mapped 540+ named contacts across 181 organizations. Closed 7 licensed niche engineering hires in 6 months, avoiding an estimated $200K+ in external search fees, and displaced roughly $40K+ in planned sourcing spend by removing the need for a contract sourcer and paid subscriptions. Compressed an estimated 2 to 3 months, around 270 to 405 hours, of manual sourcing into a two-week build. Adopted across recruiters, hiring managers, and executive leadership as a shared asset for sourcing, competitive talent mapping, and workforce planning.</p></div>
+  </div>
+
+  <div class="case">
+    <div class="case-header">
+      <div class="case-meta">SCS Engineers · 2024–Present</div>
+      <div class="case-tag">Systems</div>
+    </div>
+    <h3>ATS Migration: Greenhouse to iCIMS Plus Workday HRIS Integration</h3>
+    <div class="case-section"><div class="label">Problem</div><p>SCS Engineers had no real-time visibility into hiring pipeline health or retention data across 70+ offices and 44 states. Greenhouse was not integrated with their HRIS. Leaders were making workforce decisions without accurate data. Agency relationships had no accountability structure, costing significant spend annually with no measurable ROI.</p></div>
+    <div class="case-section"><div class="label">Action</div><p>Led the full transition from Greenhouse to iCIMS including configuration, data migration, and hiring manager training across all offices. Implemented Workday HRIS integration, unifying hiring, onboarding, and retention data for the first time. Launched a revamped employee referral program and introduced SeekOut for passive sourcing to reduce agency dependency across 44 states. Built custom Claude Code sourcing scripts and standardized Microsoft Copilot screening workflows to deepen internal sourcing capability across the footprint.</p></div>
+    <div class="case-section"><div class="label">Result</div><p>Agency spend reduced by $250K+. Leadership gained first-ever real-time pipeline and retention visibility. Internal sourcing through SeekOut and referrals became a meaningful channel across a national footprint.</p></div>
+  </div>
+
+  <div class="case">
+    <div class="case-header">
+      <div class="case-meta">SCS Engineers · 2024–Present</div>
+      <div class="case-tag">Process</div>
+    </div>
+    <h3>Intake Process Redesign: Interview-to-Offer Ratio from 5:1 to 3:1</h3>
+    <div class="case-section"><div class="label">Problem</div><p>No structured intake process existed. Hiring managers submitted reqs without clear requirements, compensation alignment, or interview frameworks. The result was a 5:1 interview-to-offer ratio: five candidates going through the full process for every single hire. Expensive in time, hiring manager bandwidth, and candidate experience across a 70-office national firm.</p></div>
+    <div class="case-section"><div class="label">Action</div><p>Redesigned the intake protocol end-to-end. Implemented mandatory kickoff calls before any req went live. Built standardized job brief templates capturing requirements, compensation range, non-negotiables, and interview format. Established 48-hour feedback expectations with hiring managers. Introduced SeekOut for passive sourcing in markets where job boards were not reaching qualified candidates.</p></div>
+    <div class="case-section"><div class="label">Result</div><p>Interview-to-offer ratio came down from 5:1 to 3:1 for field and technical roles within 6 months, with time-to-fill cut by 9 days across high-volume field roles. Fewer interviews, stronger candidates, faster closes.</p></div>
+  </div>
+
+  <div class="case">
+    <div class="case-header">
+      <div class="case-meta">Experian · 2021–2024</div>
+      <div class="case-tag">Global TA</div>
+    </div>
+    <h3>Global Team Leadership: 200+ Annual Hires Across U.S. &amp; International Markets</h3>
+    <div class="case-section"><div class="label">Context</div><p>Experian is a Fortune 500 data and financial services company with 23,000 employees across 32 countries, supporting clients in more than 100 countries. Led a team of 4 across GTM and Engineering hiring while personally closing complex technical roles across U.S. and international markets including Engineering Platform Directors, Cloud Infrastructure Managers, and senior GTM positions in a B2B SaaS environment.</p></div>
+    <div class="case-section"><div class="label">Action</div><p>Weekly pipeline coaching sessions reviewing where searches stalled and why. Created division of labor where dedicated sourcers focused on top-of-funnel for roles being closed personally. Built real-time pipeline dashboards and standardized time-in-stage reporting for visibility. Managed H1B, OPT, and TN immigration workflows across international hires. Maintained OFCCP compliance throughout. Coordinated compensation benchmarking across multiple international markets.</p></div>
+    <div class="case-section"><div class="label">Result</div><p>Offer acceptance rates lifted 10% through earlier compensation alignment. Open requisition backlog reduced 13%. 200+ annual hires maintained across multiple business units and global teams in a demanding, high-growth environment.</p></div>
+  </div>
+
+  <div class="case">
+    <div class="case-header">
+      <div class="case-meta">SCS Engineers · 2024–Present</div>
+      <div class="case-tag">Employer Brand</div>
+    </div>
+    <h3>Company's First Candidate Feedback Program and Employer Brand Strategy</h3>
+    <div class="case-section"><div class="label">Problem</div><p>SCS had no structured way to collect candidate feedback and no data to inform employer brand decisions. Glassdoor presence did not reflect the company's actual culture or growth trajectory. No visibility into where the candidate experience was breaking down.</p></div>
+    <div class="case-section"><div class="label">Action</div><p>Launched the company's first candidate feedback program using SurveyMonkey, sent to candidates post-process regardless of outcome. Partnered with Marketing to analyze feedback, identify process bottlenecks, and translate findings into employer brand improvements including updated job descriptions, interview experience changes, and a proactive Glassdoor engagement strategy. Redesigned the career site covering mission, benefits language, and employer brand messaging.</p></div>
+    <div class="case-section"><div class="label">Result</div><p>Glassdoor rating improved from 3.8 to 4.0 over 12 months. First time leadership had structured data on candidate experience. Employer brand improvements informed by real applicant feedback rather than assumptions.</p></div>
+  </div>
+
+  <hr>
+
+  <h2>📈 Metrics Dashboard</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Result</th>
+        <th>Change</th>
+        <th>Context</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="metric">Interview-to-Offer Ratio</td><td class="result">3:1</td><td>↓ from 5:1</td><td>Field &amp; technical roles, SCS Engineers</td></tr>
+      <tr><td class="metric">Time-to-Fill</td><td class="result">-9 days</td><td>↓ reduction</td><td>High-volume field roles, SCS Engineers</td></tr>
+      <tr><td class="metric">Agency &amp; RPO Spend</td><td class="result">$250K+</td><td>↓ cost saved</td><td>Vendor audit and internal sourcing buildout, SCS</td></tr>
+      <tr><td class="metric">Offer Acceptance Rate</td><td class="result">+10%</td><td>↑ improvement</td><td>Earlier comp alignment with hiring managers, Experian</td></tr>
+      <tr><td class="metric">Open Req Backlog</td><td class="result">-13%</td><td>↓ reduction</td><td>Time-in-stage reporting and scope renegotiation, Experian</td></tr>
+      <tr><td class="metric">Annual Hires</td><td class="result">200+</td><td>per year</td><td>U.S. &amp; international markets, Experian</td></tr>
+      <tr><td class="metric">Glassdoor Rating</td><td class="result">4.0</td><td>↑ from 3.8</td><td>Employer brand and candidate experience program, SCS</td></tr>
+      <tr><td class="metric">Niche Engineering Hires</td><td class="result">7</td><td>in 6 months</td><td>Hard-to-fill licensed markets, SCS Engineers</td></tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h2>🔍 Sourcing Strategy Samples</h2>
+  <div class="four-col">
+    <div class="col">
+      <h3>⚙️ Niche Engineering</h3>
+      <ul>
+        <li>SeekOut filtered by specialty and geography, outperforming agencies at SCS across 44 states</li>
+        <li>Boolean search on LinkedIn Recruiter targeting passive candidates</li>
+        <li>GitHub for active contributor profiles revealing technical depth</li>
+        <li>Handshake for early career engineering pipeline</li>
+        <li>HireEZ for passive outreach at scale</li>
+        <li>Custom Claude Code sourcing scripts that surface licensed engineers outside traditional databases</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>💼 GTM / Revenue / Corporate</h3>
+      <ul>
+        <li>Title-based Boolean targeting competitor alumni</li>
+        <li>Direct competitive sourcing from target companies</li>
+        <li>Industry Slack groups and GTM communities</li>
+        <li>Employee referral activation, since GTM hires close faster and retain longer</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>👔 Executive Search</h3>
+      <ul>
+        <li>Direct passive outreach with no job posting and a well-researched personal message</li>
+        <li>Findem for cross-platform intelligence on senior profiles</li>
+        <li>Eliminated external search firm placements at Prime Healthcare</li>
+        <li>Conference and event presence, since executive talent is found in rooms, not job boards</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>💰 Finance &amp; Corporate Sourcing</h3>
+      <ul>
+        <li>LinkedIn Recruiter searches filtering by finance certifications and senior finance titles</li>
+        <li>Boolean strings targeting controller, FP&amp;A, senior accountant, and finance manager roles</li>
+        <li>Warm referrals from finance leaders within target companies and former colleagues</li>
+        <li>Direct outreach to passive candidates with B2B technology and infrastructure finance backgrounds</li>
+        <li>LinkedIn Talent Insights for market conditions on senior finance and corporate ops roles</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>🛠 Systems &amp; Tools</h2>
+  <div class="four-col">
+    <div class="col">
+      <h3>AI &amp; Automation</h3>
+      <ul>
+        <li>Claude Code</li>
+        <li>Microsoft Copilot</li>
+        <li>Findem</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>ATS &amp; HRIS</h3>
+      <ul>
+        <li>iCIMS</li>
+        <li>Workday</li>
+        <li>Greenhouse</li>
+        <li>SmartRecruiters</li>
+        <li>SuccessFactors</li>
+        <li>Paylocity · Oracle</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>Sourcing</h3>
+      <ul>
+        <li>LinkedIn Recruiter</li>
+        <li>SeekOut · HireEZ</li>
+        <li>Indeed</li>
+        <li>GitHub · Handshake</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>Analytics &amp; Ops</h3>
+      <ul>
+        <li>LinkedIn Talent Insights</li>
+        <li>Pipeline Dashboards</li>
+        <li>Time-in-Stage Reporting</li>
+        <li>Microsoft Excel</li>
+        <li>Google Sheets</li>
+        <li>SurveyMonkey</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>Productivity &amp; Scheduling</h3>
+      <ul>
+        <li>Trello · Asana</li>
+        <li>Slack</li>
+        <li>GoodTime</li>
+        <li>Calendly</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    📬 <strong>Rahul Dang</strong> · <a href="mailto:dangrahul1192@gmail.com">dangrahul1192@gmail.com</a> · 909-436-7726 · Diamond Bar, CA · <a href="https://www.linkedin.com/in/rahuldang1" target="_blank">linkedin.com/in/rahuldang1</a>
+  </div>
+
+</div>
+</body>
+</html>
